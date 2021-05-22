@@ -1,6 +1,7 @@
 #include <vector>
 #include <iostream>
 #include <map>
+#include <algorithm>
 
 using namespace std;
 
@@ -21,11 +22,29 @@ public:
         }
         return nums;
     }
+
+    vector<vector<int>> twoSum_2ptr(vector<int> nums,int target,int start){
+        vector<vector<int>> res;
+        sort(nums.begin(),nums.end());
+        int l=start,u = nums.size()-1,s;
+        while (l < u){
+            s = nums[l] + nums[u];
+            if(s > target || (u < nums.size()-1 && nums[u] == nums[u+1]))
+                u--;
+            else if(s < target || (l > start && nums[l] == nums[l-1]))
+                l++;
+            else
+                res.push_back({nums[l++],nums[u--]});
+        }
+        return res;
+    }
 };
 
 int main_two_sum(){
     vector<int> nums({3,2,4});
 
     Solution x;
-    x.twoSum(nums,6);
+    for(auto i : x.twoSum(nums,6)){
+        cout<<i<<" ";
+    }
 }

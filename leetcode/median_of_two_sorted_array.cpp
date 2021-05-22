@@ -76,7 +76,7 @@ public:
     }
 };
 
-int mainmedian_of_two(){
+int main_median_of_two(){//median_of_two
     Solution s;
     vector<int> nums1 = {1,3,4,9},nums2 = {2,7,10,15};
     cout<<s.findMedianSortedArraysrec(nums1,nums2);
